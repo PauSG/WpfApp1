@@ -8,6 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <TextBlock Text="{Binding Path=Texto}"></TextBlock>
-        <Button Command="{Binding Path=InformacionCommand}">Informacion</Button>
+        <Button Width="50" Command="{Binding Path=InformacionCommand}" Template="{DynamicResource ButtonControlTemplate1}">
+            <Image Source="assets/Icono.ico"/>
+        </Button>
     </StackPanel>
 </Window>

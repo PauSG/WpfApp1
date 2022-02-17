@@ -10,7 +10,7 @@ using static WpfApp1.Message;
 
 namespace WpfApp1
 {
-    class MainWindowVM : ObservableRecipient
+    class MainWindowVM : ObservableObject
     {
         Navigation NavigationService;
         private bool? dialog;
@@ -18,20 +18,12 @@ namespace WpfApp1
         {
             NavigationService = new Navigation();
             InformacionCommand = new RelayCommand(abrirVentana);
+            WeakReferenceMessenger.Default.Register<TextoMessage>(this, (r, m) => { Texto = m.Value; });
         }
 
         private void abrirVentana()
         {
            dialog = NavigationService.abrirNuevaVentana();
-            if (dialog == true)
-            {
-                Console.WriteLine("Se envio");
-                Texto = WeakReferenceMessenger.Default.Send<TextoMessage>();
-            }
-            else
-            {
-                Texto = "No se envio nada";
-            }
         }
 
         private string texto;

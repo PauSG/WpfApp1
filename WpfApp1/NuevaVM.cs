@@ -18,10 +18,7 @@ namespace WpfApp1
         {
             ServicioMessage = new Message();
             ServicioNavigation = new Navigation();
-            WeakReferenceMessenger.Default.Register<NuevaVM, TextoMessage>(this, (r, m) =>
-            {
-                m.Reply(r.Texto);
-            });
+            
         }
 
         private string texto;
@@ -32,6 +29,10 @@ namespace WpfApp1
             set { SetProperty(ref texto, value); }
         }
 
+        public void Aceptar()
+        {
+            WeakReferenceMessenger.Default.Send(new TextoMessage(Texto));
+        }
 
     }
 }

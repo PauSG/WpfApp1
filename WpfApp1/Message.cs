@@ -9,6 +9,6 @@ namespace WpfApp1
 {
     class Message
     {
-        public class TextoMessage : RequestMessage<string>{}
+        public class TextoMessage : ValueChangedMessage<string>{ public TextoMessage(string texto) : base(texto) { } }
     }
 }

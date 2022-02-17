@@ -24,10 +24,12 @@ namespace WpfApp1
         {
             InitializeComponent();
             vm = new NuevaVM();
+            this.DataContext = vm;
         }
 
         private void Aceptar_CLick(object sender, RoutedEventArgs e)
         {
+            vm.Aceptar();
             this.DialogResult = true;
         }
     }
